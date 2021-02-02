@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="680dp"
+    android:layout_height="500dp"
+    android:background="@android:color/transparent">
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/card_customer_service"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/Title_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"/>
+
+            <Button
+                android:id="@+id/bt_order_set"
+                android:layout_width="380dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/tv_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button"
+                android:text="@string/tx_order_set"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bt_order_component"
+                android:layout_width="380dp"
+                android:layout_height="140dp"
+                android:layout_below="@id/bt_order_set"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button"
+                android:text="@string/tx_order_component"
+                android:textSize="24sp" />
+        </RelativeLayout>
+    </android.support.design.card.MaterialCardView>
+</RelativeLayout>

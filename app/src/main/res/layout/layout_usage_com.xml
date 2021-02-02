@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/al_us_snp_com_tv_part"
+        style="@style/alr_title_com_nor"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:text="@string/tx_default"
+        android:gravity="left"
+        android:paddingStart="20dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/al_us_snp_com_tv_usage"
+        style="@style/alr_title_com_nor"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/al_us_snp_com_tv_part"
+        android:paddingVertical="10dp"
+        android:layout_marginHorizontal="3dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/al_us_snp_com_tv_packing_snp"
+        style="@style/alr_title_com_nor"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/al_us_snp_com_tv_usage"
+        android:paddingVertical="10dp"
+        android:layout_marginHorizontal="3dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/al_us_snp_com_tv_stock"
+        style="@style/alr_title_com_nor"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/al_us_snp_com_tv_packing_snp"
+        android:layout_marginHorizontal="3dp"
+        android:paddingVertical="10dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/al_us_snp_com_tv_qty"
+        style="@style/alr_title_com_nor"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/al_us_snp_com_tv_stock"
+        android:layout_marginHorizontal="3dp"
+        android:paddingVertical="10dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+
+    <LinearLayout
+        android:id="@+id/al_us_snp_com_number_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/al_us_snp_com_tv_qty"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/al_us_snp_com_number_minus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_minus" />
+
+        <EditText
+            android:id="@+id/al_us_snp_com_num_cus"
+            style="@style/alr_title_com_nor"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/black_tra"
+            android:gravity="center"
+            android:inputType="number"
+            android:lines="1"
+            android:maxEms="1"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/al_us_snp_com_number_add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_add"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tx_fg_code_gdj_usCom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tx_fg_code_set_abt_usCom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+</RelativeLayout>

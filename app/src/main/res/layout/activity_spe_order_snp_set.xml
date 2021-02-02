@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container_partNumber"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_pic">
+
+    <include
+        android:id="@+id/include_top"
+        layout="@layout/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/spe_order_set_snp_tv_title"
+        style="@style/Title_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/include_top"
+        android:layout_marginTop="50dp"
+        android:background="@color/black_overlay"
+        android:paddingStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp" />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/card_part_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/spe_order_set_snp_tv_title"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        app:cardBackgroundColor="#D8EFEBEB"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp">
+
+            <TextView
+                android:id="@+id/spe_order_set_tv_snp_imc"
+                style="@style/styleTitle_28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/spe_order_set_snp_tv_snp"
+                style="@style/styleTitle_20Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spe_order_set_tv_snp_imc"
+                android:layout_marginTop="15dp"
+                android:text="@string/tx_snp" />
+
+            <Spinner
+                android:id="@+id/spe_order_set_snp_spin_snp"
+                style="@style/styleTitle_20Normal"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/spe_order_set_tv_snp_imc"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/spe_order_set_snp_tv_snp"
+                android:backgroundTint="@color/QRCodeBlackColor"
+                android:padding="10dp" />
+            <!--            android:dropDownWidth="wrap_content"-->
+            <!--            android:popupBackground="@color/color_gray_light"-->
+            <!--            android:spinnerMode="dropdown"-->
+            <!--            android:textDirection="firstStrong"-->
+            <Button
+                android:id="@+id/spe_order_set_snp_bt_cart_count"
+                style="@style/bt_cart"
+                android:layout_width="130dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/spe_order_set_tv_snp_imc"
+                android:layout_alignParentEnd="true"
+                android:background="@color/color_organ"
+                android:onClick="onClickUsage"
+                android:paddingHorizontal="20dp"
+                android:text="0"
+                android:textColor="@color/QRCodeWhiteColor"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/spe_order_set_snp_tv_title_spe"
+                style="@style/styleTitle_20Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spe_order_set_snp_spin_snp"
+                android:layout_marginTop="15dp"
+                android:text="@string/tx_part_number" />
+
+            <EditText
+                style="@style/styleTitle_20Normal"
+                android:id="@+id/spe_order_set_snp_ed_filter"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_edit_text_nor"
+                android:layout_toEndOf="@id/spe_order_set_snp_tv_title_spe"
+                android:layout_below="@id/spe_order_set_snp_spin_snp"
+                android:maxLines="1"
+                android:inputType="textFilter"
+                android:layout_marginStart="20dp"
+                android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:imeOptions="actionSearch"
+                />
+
+            <RelativeLayout
+                android:id="@+id/relative_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spe_order_set_snp_ed_filter">
+
+                <TextView
+                    android:id="@+id/spe_order_set_snp_tv_ti_part_com"
+                    style="@style/styleTitle_20Bold"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_orange_dark"
+                    android:padding="5dp"
+                    android:text="@string/tx_part_number"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/spe_order_set_snp_tv_ti_snp"
+                    style="@style/styleTitle_20Bold"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/spe_order_set_snp_tv_ti_part_com"
+                    android:background="@android:color/holo_orange_dark"
+                    android:padding="5dp"
+                    android:text="@string/tx_tit_snp"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/spe_order_set_snp_tv_ti_ship"
+                    style="@style/styleTitle_20Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/spe_order_set_snp_tv_ti_snp"
+                    android:background="@android:color/holo_orange_dark"
+                    android:padding="5dp"
+                    android:text="@string/tx_part_ship"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_title"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true">
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/special_set_item_manu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white_tra"
+                    android:clipToPadding="false"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="30dp"
+                    android:scrollbarSize="3dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/layout_item_list"                    />
+            </ScrollView>
+        </RelativeLayout>
+    </android.support.design.card.MaterialCardView>
+</RelativeLayout>

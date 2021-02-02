@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/alert_qr"
+    android:layout_width="wrap_content"
+    android:background="@android:color/transparent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layout_text_informa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp">
+        <TextView
+            android:id="@+id/tv_cus_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="@style/Title_bold"/>
+        <TextView
+            android:id="@+id/tv_welcome_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_cus_service"
+            android:visibility="gone"
+            style="@style/styleTitle_28"/>
+
+        <TextView
+            style="@style/styleTitle_22"
+            android:textStyle="bold"
+            android:id="@+id/tv_gdj_vmi_system"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_gdj_vmi_system"
+            android:layout_below="@+id/tv_welcome_to"/>
+
+        <TextView
+            style="@style/styleTitle_22"
+            android:textStyle="bold"
+            android:id="@+id/tv_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_cus"
+            android:layout_below="@id/tv_gdj_vmi_system"/>
+        <TextView
+            style="@style/styleTitle_22"
+            android:textStyle="normal"
+            android:id="@+id/tv_customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_default"
+            android:textAllCaps="true"
+            android:layout_toEndOf="@id/tv_customer"
+            android:layout_alignBaseline="@id/tv_customer"
+            android:layout_marginStart="8dp"/>
+        <TextView
+            style="@style/styleTitle_22"
+            android:textStyle="bold"
+            android:id="@+id/tv_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_datetime"
+            android:layout_below="@id/tv_customer"/>
+        <TextView
+            style="@style/styleTitle_22"
+            android:textStyle="normal"
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_default"
+            android:textAllCaps="true"
+            android:layout_toEndOf="@id/tv_datetime"
+            android:layout_alignBaseline="@id/tv_datetime"
+            android:layout_marginStart="8dp"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="50dp"
+        android:background="@mipmap/ic_banner_company_foreground"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        />
+
+    <Button
+        style="@style/bt_back"
+        android:id="@+id/bt_back"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_button"
+        android:layout_alignStart="@id/layout_text_informa"
+        android:layout_below="@+id/layout_text_informa"
+        android:onClick="onClickBack"
+        android:visibility="gone"
+
+        />
+    <Button
+        style="@style/bt_home"
+        android:id="@+id/bt_home"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_button"
+        android:layout_alignStart="@id/layout_text_informa"
+        android:layout_below="@+id/layout_text_informa"
+        android:onClick="onClickBack"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,266 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!--        <item name="windowActionBar">false</item>-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
+    </style>
+
+    <!-- Splash Screen theme. -->
+    <style name="SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Title" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_22</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily"></item>
+    </style>
+
+    <style name="Title_IMC" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_20</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily"></item>
+
+    </style>
+
+    <style name="Title_bold" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="fontFamily"></item>
+
+    </style>
+
+    <style name="Title_32" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Title_28" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="styleTitle_28" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_28</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="styleTitle_24" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_24</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="styleTitle_22" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_22</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="styleTitle_20Bold" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_20</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="styleTitle_20Normal" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_20</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="styleTitle_18Bold" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="styleTitle_18Normal" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="styleTitle_16Bold" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="styleTitle_16Normal">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+    <style name="EditText_Login" parent="Widget.AppCompat.EditText" >
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
+
+    <style name="AlertDialog_error" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textColorPrimary">@android:color/holo_red_light</item>
+
+    </style>
+
+    <style name="AlertDialog_warning" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:textColorPrimary">@android:color/secondary_text_light</item>
+    </style>
+
+    <style name="AlertDialogTheme">
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Alert.Button.Neutral</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Alert.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Title_warning">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="bt_back" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:drawableStart">@drawable/ic_arrow_left</item>
+        <item name="android:paddingEnd">40dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:text">@string/tx_back</item>
+
+    </style>
+
+    <style name="bt_home" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:drawableStart">@drawable/ic_home</item>
+        <item name="android:paddingEnd">25dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:text">@string/tx_home</item>
+
+    </style>
+
+    <style name="alr_title" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:background">#FF6D00</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="alr_title_com" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    <style name="alr_title_com_nor" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/QRCodeBlackColor</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="spinner" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+<!--        <item name="android:background">#FF6D00</item>-->
+<!--        <item name="android:foreground">#ffffff</item>-->
+        <item name="iconSize">30dp</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="bt_cart" parent="Widget.AppCompat.Button" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_22</item>
+        <item name="android:drawableLeft">@drawable/ic_shopping</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="bt" parent="Widget.AppCompat.Button" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_22</item>
+        <item name="android:background">@drawable/shape_button</item>
+    </style>
+
+    <style name="MyAppThemeTwo" parent="Theme.AppCompat.Light">
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogStyle</item>
+    </style>
+
+    <style name="MyDatePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="showTitle">false</item>
+        <item name="colorControlActivated">#ffea00</item>
+        <item name="android:selectableItemBackgroundBorderless">@color/colorAccent</item>
+        <item name="colorControlHighlight">#c51162</item>
+        <item name="android:headerBackground">#00c853</item>
+    </style>
+
+    <style name="Dialg" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/color_red</item>
+        <item name="android:textSize">@dimen/text_20</item>
+
+    </style>
+
+</resources>

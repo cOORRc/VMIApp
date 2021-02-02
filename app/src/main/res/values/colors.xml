@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff6f00</color>
+    <color name="colorPrimaryDark">#c43e00</color>
+    <color name="colorAccent">#ffa040</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="black_tra">#66999898</color>
+    <color name="color_mask">#60000000</color>
+    <color name="white_tra">#E1EFEFEF</color>
+    <color name="blue_tra">#BF7FA2BF</color>
+
+    <color name="color_gray_light">#E8E7E7</color>
+    <color name="QRCodeWhiteColor">#FFFFFF</color>
+    <color name="QRCodeBlackColor">#000000</color>
+    <color name="color_organ">#FFA35E</color>
+    <color name="color_red">#DD0000</color>
+    <color name="color_dum">#A6E2D6D3</color>
+</resources>

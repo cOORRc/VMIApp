@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alert_qr"
+    android:layout_width="680dp"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent">
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_crad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp">
+
+        <TextView
+            android:id="@+id/alert_tv_title_order"
+            style="@style/styleTitle_24"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:background="@color/color_gray_light"
+            android:paddingStart="30dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="20dp"
+            android:text="@string/tx_order_emergency_set" />
+
+        <Button
+            android:id="@+id/alert_bt_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/holo_red_dark"
+            android:foreground="@drawable/ic_close" />
+
+        <LinearLayout
+            android:id="@+id/linear_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alert_tv_title_order"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/alert_img_order"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:background="@color/zxing_viewfinder_mask" />
+
+            <TextView
+                android:id="@+id/alert_tv_name_box"
+                style="@style/styleTitle_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tx_default"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_dataBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alert_tv_title_order"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@id/linear_img"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            android:text="@string/tx_default"
+            tools:ignore="NotSibling">
+
+            <TextView
+                android:id="@+id/alert_tv_name_prt"
+                style="@style/styleTitle_20Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/tx_part_num" />
+
+            <TextView
+                android:id="@+id/alert_tv_name_box2"
+                style="@style/styleTitle_20Normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="30dp"
+                android:text="@string/tx_default" />
+
+            <LinearLayout
+                android:id="@+id/alert_number_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/alert_tit_tv_picker"
+                    style="@style/styleTitle_20Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:text="@string/tx_tit_qty" />
+
+                <Button
+                    android:id="@+id/alert_number_minus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/ic_minus" />
+
+                <EditText
+                    android:id="@+id/alert_number_customer"
+                    style="@style/styleTitle_20Normal"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black_tra"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxEms="1"
+                    android:text="0"
+                    android:focusable="false"/>
+
+                <Button
+                    android:id="@+id/alert_number_add"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_add" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/alert_tv_emer_date"
+                style="@style/styleTitle_20Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="left"
+                android:text="@string/tx_date_of_delivery" />
+
+            <TextView
+                android:id="@+id/alert_input_emer_date"
+                style="@style/styleTitle_20Normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/shape_edit_text_nor"
+                android:layout_marginEnd="50dp"
+                android:layout_gravity="left"/>
+
+            <TextView
+                android:id="@+id/alert_tv_ord_refer"
+                style="@style/styleTitle_20Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="left"
+                android:text="@string/tx_order_reference" />
+
+            <EditText
+                android:id="@+id/alert_input_ord_refer"
+                style="@style/styleTitle_20Normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/shape_edit_text_nor"
+                android:layout_gravity="left"
+                android:layout_marginEnd="50dp"
+                android:focusable="auto"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/tit_alert_detail_component"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_dataBox"
+            android:layout_centerHorizontal="true"
+            android:layout_alignStart="@id/linear_img"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/tit_alert_tv_part_com"
+                style="@style/alr_title"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/tx_part_component"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tit_alert_tv_usage"
+                style="@style/alr_title"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tit_alert_tv_part_com"
+                android:paddingBottom="5dp"
+                android:text="@string/tx_usage"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tit_alert_tv_packing_snp"
+                style="@style/alr_title"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tit_alert_tv_usage"
+                android:paddingBottom="5dp"
+                android:text="@string/tx_packing"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tit_alert_tv_qty"
+                style="@style/alr_title"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tit_alert_tv_packing_snp"
+                android:paddingBottom="5dp"
+                android:text="@string/tx_qty"
+                android:textAlignment="center" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/tit_alert_rv_part_set"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_below="@id/tit_alert_tv_part_com"
+                android:layout_alignStart="@id/tit_alert_tv_part_com"
+                android:layout_alignEnd="@id/tit_alert_tv_qty"
+                android:background="@color/black_tra"
+                tools:listitem="@layout/layout_part_set"
+                android:animateLayoutChanges="true"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/alert_set_bt_cart"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/tit_alert_detail_component"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="#E2D6D3"
+            android:foreground="@drawable/ic_shopping_cart"
+            android:enabled="false"
+            android:foregroundGravity="center"/>
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

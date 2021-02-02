@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_login_kiosk"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_new"
+    android:scaleType="centerInside"
+    tools:context=".LoginKioskActivity">
+
+    <include
+        android:id="@+id/include_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_top"/>
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/card_customer_service"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        android:layout_centerInParent="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp">
+
+            <TextView
+                style="@style/styleTitle_24"
+                android:id="@+id/tv_card_customer_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tx_cus_service"
+                android:paddingBottom="20dp"/>
+
+            <TextView
+                style="@style/styleTitle_22"
+                android:textStyle="bold"
+                android:id="@+id/tv_card_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prompt_username"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/tv_card_customer_service"/>
+            <EditText
+                android:id="@+id/et_username"
+                style="@style/EditText_Login"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/tv_card_username"
+                android:layout_below="@id/tv_card_customer_service"
+                android:layout_marginEnd="24dp"
+                android:imeOptions="actionNext"
+                android:background="@drawable/shape_edit_text"
+                android:inputType="textEmailAddress"
+                android:layout_alignParentEnd="true"
+                />
+            <TextView
+                style="@style/styleTitle_22"
+                android:textStyle="bold"
+                android:id="@+id/tv_card_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prompt_password"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_below="@id/tv_card_username"/>
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/EditText_Login"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="24dp"
+                android:imeActionLabel="@string/action_log_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/et_username"
+                android:background="@drawable/shape_edit_text"
+                android:layout_toEndOf="@id/tv_card_password"
+                />
+        </RelativeLayout>
+    </android.support.design.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_customer_service"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/zxing_custom_viewfinder_mask"
+        android:text="@string/tx_login"
+        android:textSize="24sp"
+        android:enabled="false"/>
+
+    <TextView
+        style="@style/Title_warning"
+        android:textSize="@dimen/text_14"
+        android:id="@+id/tv_warning"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/tx_warning"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black_overlay"
+        android:layout_margin="18dp" />
+</RelativeLayout>

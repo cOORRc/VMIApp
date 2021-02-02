@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="450dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="40dp"
+    android:background="@color/color_gray_light"
+    >
+
+    <Button
+        android:id="@+id/al3_bt_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/holo_red_dark"
+        android:foreground="@drawable/ic_close" />
+
+    <TextView
+        style="@style/styleTitle_20Bold"
+        android:id="@+id/al3_tv_detailEN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tx_alertComEmerEN"
+        android:layout_below="@id/al3_bt_close"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        style="@style/styleTitle_20Normal"
+        android:id="@+id/al3_tv_detailTH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/al3_tv_detailEN"
+        android:text="@string/tx_alertComEmerTH"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/al3_tv_detailTH"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <Button
+            style="@style/styleTitle_20Normal"
+            android:id="@+id/al3_bt_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:paddingHorizontal="@dimen/text_20"
+            android:text="@string/tx_yes"
+            />
+        <Button
+            style="@style/styleTitle_20Normal"
+            android:id="@+id/al3_bt_no"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="80dp"
+            android:text="@string/tx_no"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/alert_tv_part_com"
+        style="@style/alr_title_com_nor"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:text="@string/tx_default"
+        android:gravity="left"
+        android:paddingStart="20dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/alert_tv_usage"
+        style="@style/alr_title_com_nor"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/alert_tv_part_com"
+        android:paddingVertical="10dp"
+        android:text="@string/tx_default"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+
+
+    <TextView
+        android:id="@+id/alert_tv_packing_snp"
+        style="@style/alr_title_com_nor"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/alert_tv_usage"
+        android:paddingVertical="10dp"
+        android:text="@string/tx_default"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/alert_tv_qty"
+        style="@style/alr_title_com_nor"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/alert_tv_packing_snp"
+        android:paddingVertical="10dp"
+        android:text="@string/tx_default"
+        android:textAlignment="center"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/set_tx_fg_code_gdj_usCom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/set_tx_fg_code_set_abt_usCom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>

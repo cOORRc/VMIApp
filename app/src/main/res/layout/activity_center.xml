@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_pic"
+    tools:context=".CenterActivity">
+
+    <include
+        android:id="@+id/include_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/layout_top"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_cen_bt_cus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include_top"
+        android:layout_alignBottom="@id/line1"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center">
+
+        <Button
+            style="@style/styleTitle_22"
+            android:id="@+id/cen_bt_usage_confirm"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:text="@string/tx_usage_confirm"
+            android:onClick="onClickCustomers"
+            android:tag="usage"
+            android:padding="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white_tra"
+            android:drawableStart="@drawable/ic_stack"/>
+
+        <Button
+            style="@style/styleTitle_22"
+            android:id="@+id/cen_bt_special_order"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:text="@string/tx_special_order"
+            android:tag="special"
+            android:layout_below="@id/cen_bt_usage_confirm"
+            android:onClick="onClickCustomers"
+            android:padding="30dp"
+            android:background="@color/white_tra"
+            android:drawableStart="@drawable/ic_alert" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/white"
+        android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:id="@+id/layout_cen_bt_gdj"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line1"
+        android:gravity="center"
+        >
+
+    <Button
+        style="@style/styleTitle_22"
+        android:id="@+id/cen_bt_stock_replenishment"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:text="@string/tx_stock_replenishment"
+        android:onClick="onClickDriver"
+        android:padding="30dp"
+        android:background="@color/white_tra"
+        android:drawableStart="@drawable/ic_truck"
+        />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
