@@ -73,8 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="150dp"
-                android:layout_gravity="left" />
+                android:layout_gravity="left"
+                android:maxLines="2"/>
             <TextView
                 android:id="@+id/alert_tv_tit_name_box2"
                 style="@style/styleTitle_20Bold"
@@ -89,8 +89,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="50dp"
-                android:layout_gravity="left" />
+                android:layout_gravity="left"
+                android:maxLines="2"/>
 
             <TextView
                 android:id="@+id/alert_tv_emer_com_date"
@@ -154,7 +154,7 @@
                 <TextView
                     android:id="@+id/alert_tv_tit_part_com"
                     style="@style/alr_title_com"
-                    android:layout_width="300dp"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:text="@string/tx_part_component"
@@ -173,7 +173,7 @@
                 <TextView
                     android:id="@+id/alert_tv_tit_packing_snp"
                     style="@style/alr_title_com"
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:layout_toEndOf="@id/alert_tv_tit_usage"
@@ -183,7 +183,7 @@
                 <TextView
                     android:id="@+id/alert_tv_tit_qty"
                     style="@style/alr_title_com"
-                    android:layout_width="50dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:layout_toEndOf="@id/alert_tv_tit_packing_snp"
@@ -193,7 +193,7 @@
                 <TextView
                     android:id="@+id/alert_tv_tit_picker"
                     style="@style/alr_title_com"
-                    android:layout_width="110dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/alert_tv_tit_qty"
                     android:text="@string/tx_picker"

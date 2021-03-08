@@ -7,13 +7,14 @@
     <TextView
         android:id="@+id/al_us_snp_tv_part_com"
         style="@style/alr_title_com_nor"
-        android:layout_width="300dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:paddingVertical="10dp"
         android:text="@string/tx_default"
         android:gravity="left"
         android:paddingStart="20dp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:maxLines="2"/>
 
     <TextView
         android:id="@+id/al_us_snp_tv_usage"
@@ -41,7 +42,7 @@
     <TextView
         android:id="@+id/al_us_snp_tv_vmi_stock"
         style="@style/alr_title_com_nor"
-        android:layout_width="80dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/al_us_snp_tv_packing_snp"
         android:paddingVertical="10dp"
@@ -51,7 +52,7 @@
     <TextView
         android:id="@+id/al_us_snp_tv_qty"
         style="@style/alr_title_com_nor"
-        android:layout_width="80dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/al_us_snp_tv_vmi_stock"
         android:paddingVertical="10dp"

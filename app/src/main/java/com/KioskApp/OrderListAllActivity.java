@@ -1,6 +1,7 @@
 package com.KioskApp;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.KioskApp.ui.hideSystemUI;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -43,62 +45,74 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrderListAllActivity extends AppCompatActivity {
-
+	/* SharedPreferences */
 	SharedPreferences sp;
 	SharedPreferences.Editor editor;
 	final String PREF_NAME = "Preferences";
+	/* key SharedPreferences */
 	final String USER_NAME = "Username";
 	final String USER_PROJECT_NAME = "ProjectName";
 	final String USER_PART_CUS = "cus";
 	final String USER_BOM = "Bom";
 	final String USER_TYPE_USAGE = "type_usage";
 
+	/* Request to connect server for get json */
 	private RequestQueue OrderQueue;
+	private String status_id = "0";
+
+	/* variables ui */
 	private String order_all_tx_username;
 	private String order_all_tx_project_name;
 	private String order_all_tx_bom;
-	private String order_all_tx_count;
+	private String order_all_tx_type_usage;
 	private TextView order_all_tv_title_cus_service, order_all_tv_gdj_vmi_system, order_all_tv_customer,
 			order_all_tv_title, order_all_tv_customer_name;
 	private Button order_all_bt_home;
-	private RecyclerView order_all_rv_itemMenu;
-	private ArrayList<DataOrder> order_list_all;
-	private AllOrderListAdapter order_adapter;
-	private String status_id = "0";
 	private Button order_all_bt_del;
 	private Button order_all_bt_con;
 	private TextView order_all_tv_datetime, order_all_tv_ddmmyy;
+
+	/* variables recyclerView */
+	private RecyclerView order_all_rv_itemMenu;
+	private ArrayList<DataOrder> order_list_all;
+	private AllOrderListAdapter order_adapter;
+
+	/* variables dialog qr code */
 	private Dialog Dialog_qr;
-	private String order_all_tx_type_usage;
+
+	/* variables progress */
+	private ProgressDialog order_all_progDi;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_list_all);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		sp = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-		order_all_tx_username = sp.getString(USER_NAME, "");
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //set screen portrait
+		hideSystemUI.hideNavigations(this); // hide navigation
+
+		sp = getSharedPreferences(PREF_NAME, MODE_PRIVATE);// ชื่อไฟล์ที่จะทำการเก็บ, รูปแบบการจัดเก็บไฟล์
+		order_all_tx_username = sp.getString(USER_NAME, ""); // ดึงข้อมูลในไฟล์
 		order_all_tx_project_name = sp.getString(USER_PROJECT_NAME, "");
 		order_all_tx_type_usage = sp.getString(USER_TYPE_USAGE,"");
 		order_all_tx_bom = sp.getString(USER_BOM, "");
+
 		OrderQueue = Volley.newRequestQueue(this);
-		Log.e("TAG","Hello");
-		Log.e("sp",order_all_tx_type_usage +
-				", "+ order_all_tx_bom+", "+order_all_tx_username);
 		init_snpCom();
 		Usage_Data_MyCart();
 	}
+	/* set view */
 	private void init_snpCom() {
 		order_all_tv_title_cus_service = findViewById(R.id.tv_cus_service);
 		order_all_tv_title_cus_service.setText(R.string.tx_cus_service);
 		order_all_tv_title_cus_service.setVisibility(View.VISIBLE);
-		order_all_tv_title_cus_service.setTextSize(40);
+		order_all_tv_title_cus_service.setTextSize(32);
 		order_all_tv_gdj_vmi_system = findViewById(R.id.tv_gdj_vmi_system);
 		order_all_tv_customer = findViewById(R.id.tv_customer);
 		order_all_tv_customer_name = findViewById(R.id.tv_customer_name);
 		order_all_tv_customer_name.setText(order_all_tx_username);
 		order_all_tv_datetime = findViewById(R.id.tv_datetime);
 		order_all_tv_ddmmyy = findViewById(R.id.tv_time);
+		/*set time*/
 		Thread thread = new Thread(){
 			@Override
 			public void run() {
@@ -122,6 +136,7 @@ public class OrderListAllActivity extends AppCompatActivity {
 			}
 		};
 		thread.start();
+
 		order_all_bt_home = findViewById(R.id.bt_home);
 		order_all_bt_home.setVisibility(View.VISIBLE);
 		order_all_bt_home.setText(R.string.tx_home);
@@ -171,7 +186,25 @@ public class OrderListAllActivity extends AppCompatActivity {
 		});
 	}
 
+	/*create progress*/
+	private void start_progressOrder() {
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+			}
+		}, 1000);
+		order_all_progDi = new ProgressDialog(OrderListAllActivity.this, R.style.Dialg);
+		order_all_progDi.setMessage("Loading..."); // Setting Message
+		order_all_progDi.setTitle(getResources().getString(R.string.tx_vmi_system)); // Setting Title
+		order_all_progDi.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+		order_all_progDi.show(); // Display Progress Dialog
+		order_all_progDi.setCancelable(false);
+	}
+
+	/* call api for get data in cart  (order list)*/
 	private void Usage_Data_MyCart() {
+		start_progressOrder();
 		String urlMyCart = "https://lac-apps.albatrossthai.com/api/VMI/php/Usage_Confirm/Usage_Data_MyCart.php";
 		String Project_Name = order_all_tx_project_name;
 		HashMap<String, String> hashMap_MyCart = new HashMap<>();
@@ -199,12 +232,14 @@ public class OrderListAllActivity extends AppCompatActivity {
 					e.printStackTrace();
 				}
 				if (status_id.equals("1")) {
+					order_all_progDi.dismiss();
 					order_all_bt_con.setEnabled(true);
 					order_all_bt_con.setTextColor(Color.WHITE);
 					order_all_bt_con.setBackgroundResource(R.drawable.button_selector);
 					order_adapter = new AllOrderListAdapter(OrderListAllActivity.this, order_list_all);
 					order_all_rv_itemMenu.setAdapter(order_adapter);
 				} else {
+					order_all_progDi.dismiss();
 					final Dialog di_no_num_cart = new Dialog(OrderListAllActivity.this);
 					di_no_num_cart.setContentView(R.layout.layout_alert_zero);
 					di_no_num_cart.setCancelable(false);
@@ -235,6 +270,7 @@ public class OrderListAllActivity extends AppCompatActivity {
 		}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				order_all_progDi.dismiss();
 				error.printStackTrace();
 			}
 		});
@@ -247,6 +283,7 @@ public class OrderListAllActivity extends AppCompatActivity {
 		}
 	}
 
+	/* create dialog*/
 	public void onClickConfirm(View view) {
 		Log.i("TAG", "count goods on cart");
 		mToastRunnable.run();
@@ -260,7 +297,7 @@ public class OrderListAllActivity extends AppCompatActivity {
 		TextView al_tv_ple = (TextView) Dialog_qr.findViewById(R.id.alert_tv_ple_qr_code);
 		al_tv_ple.setText(R.string.tx_pls_scan_qr);
 		final TextView al_tv_time = (TextView) Dialog_qr.findViewById(R.id.alert_tv_time);
-		MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+		MultiFormatWriter multiFormatWriter = new MultiFormatWriter(); //create qr code
 		try {
 			BitMatrix bitMatrix = multiFormatWriter.encode(order_all_tx_project_name, BarcodeFormat.QR_CODE, 400, 400);
 			BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -273,7 +310,15 @@ public class OrderListAllActivity extends AppCompatActivity {
 		Dialog_qr.show();
 	}
 
+	public void onClickClose(View view) {
+		if (view.getId() == R.id.alert_bt_close_confirm){
+			mHandler.removeCallbacks(mToastRunnable);
+			Dialog_qr.dismiss();
+		}
+	}
+	/* variables json for del data*/
 	private String sta_idDel;
+	/* call api for delete data (order list) */
 	private void callApi_Del() {
 		String urlMyCart = "https://lac-apps.albatrossthai.com/api/VMI/php/Usage_Confirm/Usage_Del_Pre.php";
 		String Project_Name = order_all_tx_project_name;
@@ -308,6 +353,7 @@ public class OrderListAllActivity extends AppCompatActivity {
 		OrderQueue.add(request_partNum);
 	}
 
+	/* clear data in SharedPre */
 	private void clearSharedPreferences() {
 		editor = sp.edit();
 		editor.remove(USER_TYPE_USAGE);
@@ -316,6 +362,9 @@ public class OrderListAllActivity extends AppCompatActivity {
 		editor.commit();
 	}
 
+	/*Handler for check data in a cart when user scan tags (done)
+	*,dialog will close and back to centerActivity.page
+	* */
 	private Handler mHandler = new Handler();
 	private Runnable mToastRunnable = new Runnable() {
 		@Override
@@ -325,8 +374,10 @@ public class OrderListAllActivity extends AppCompatActivity {
 		}
 	};
 
+	/* variables json data (api:Usage_Qty_MyCart.php)*/
 	private String sta_idcheckCart = "0";
 	private int sta_tx_checkCart = 0;
+	/* call api for check qty on cart */
 	private void callApi_CheckMyCart() {
 		String url_checkCart = "https://lac-apps.albatrossthai.com/api/VMI/php/Usage_Confirm/Usage_Qty_MyCart.php";
 		String Project_Name = order_all_tx_project_name;
@@ -347,6 +398,7 @@ public class OrderListAllActivity extends AppCompatActivity {
 				}
 				if (sta_idcheckCart.equals("1")){
 					if (sta_tx_checkCart==0){
+						clearSharedPreferences();
 						mHandler.removeCallbacks(mToastRunnable);
 						Dialog_qr.dismiss();
 						startActivity(new Intent(OrderListAllActivity.this, CenterActivity.class));
@@ -356,6 +408,8 @@ public class OrderListAllActivity extends AppCompatActivity {
 		}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				mHandler.removeCallbacks(mToastRunnable);
+				Dialog_qr.dismiss();
 				error.printStackTrace();
 			}
 		});

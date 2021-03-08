@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -19,7 +22,9 @@
         android:roundIcon="@mipmap/ic_gdk_round"
         android:screenOrientation="userPortrait"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.KioskApp.GuideActivity"/>
         <activity android:name="com.KioskApp.OrderListAllActivity" />
         <activity android:name="com.KioskApp.UsageSetActivity" />
         <activity android:name="com.KioskApp.UsageComponentActivity" />

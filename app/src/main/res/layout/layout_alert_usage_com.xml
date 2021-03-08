@@ -73,8 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="50dp"
-                android:layout_gravity="left" />
+                android:layout_gravity="left"
+                android:maxLines="2"/>
             <TextView
                 android:id="@+id/al_com_tv_tit_name_box2"
                 style="@style/styleTitle_20Bold"
@@ -89,8 +89,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="50dp"
-                android:layout_gravity="left" />
+                android:layout_gravity="left"
+                android:maxLines="2"/>
 
         </LinearLayout>
 
@@ -113,7 +113,7 @@
                 <TextView
                     android:id="@+id/al_com_tv_tit_part_com"
                     style="@style/alr_title_com"
-                    android:layout_width="250dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
@@ -144,7 +144,7 @@
                 <TextView
                     android:id="@+id/al_com_tv_tit_vmi_stock"
                     style="@style/alr_title_com"
-                    android:layout_width="50dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="3dp"
                     android:layout_toEndOf="@id/al_com_tv_tit_packing_snp"

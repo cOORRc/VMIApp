@@ -26,7 +26,7 @@
             style="@style/styleTitle_22"
             android:id="@+id/cen_bt_usage_confirm"
             android:layout_width="400dp"
-            android:layout_height="200dp"
+            android:layout_height="160dp"
             android:text="@string/tx_usage_confirm"
             android:onClick="onClickCustomers"
             android:tag="usage"
@@ -39,7 +39,7 @@
             style="@style/styleTitle_22"
             android:id="@+id/cen_bt_special_order"
             android:layout_width="400dp"
-            android:layout_height="200dp"
+            android:layout_height="160dp"
             android:text="@string/tx_special_order"
             android:tag="special"
             android:layout_below="@id/cen_bt_usage_confirm"
@@ -62,20 +62,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/line1"
-        android:gravity="center"
         >
 
     <Button
         style="@style/styleTitle_22"
         android:id="@+id/cen_bt_stock_replenishment"
         android:layout_width="400dp"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:text="@string/tx_stock_replenishment"
         android:onClick="onClickDriver"
         android:padding="30dp"
         android:background="@color/white_tra"
         android:drawableStart="@drawable/ic_truck"
+        android:layout_centerInParent="true"
         />
+
+        <ImageButton
+            android:id="@+id/cen_img_bt_help"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/ic_open_book"
+            android:layout_margin="20dp"
+            android:onClick="onClickHelp"
+            />
 
     </RelativeLayout>
 

@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.KioskApp.ui.hideSystemUI;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -39,20 +40,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginKioskActivity extends AppCompatActivity {
+/* variables ui */
 	private TextView login_tv_welcome, login_tv_gdj_vmi_system, login_tv_datetime, login_tv_ddmmyy, login_tv_customer, login_tv_customer_name;
 	private ImageView login_img_logo_gdj;
 	private Button login_bt_back;
 
+/* Request to connect server for get json */
 	private RequestQueue mQueue;
+	/* variable get json */
 	private String str_id = "0";
 
+	/* SharedPreferences */
 	SharedPreferences sp;
 	SharedPreferences.Editor editor;
+	/* key SharedPreferences*/
 	final String PREF_NAME = "Preferences";
 	final String USER_NAME = "Username";
 	final String USER_PROJECT_NAME = "ProjectName";
 	final String USER_TERMINAL_TYPE = "TerminalID";
 
+/* variables textWatcher */
 	private EditText usernameEditText, passwordEditText;
 	private Button loginButton;
 	private String user;
@@ -60,7 +67,6 @@ public class LoginKioskActivity extends AppCompatActivity {
 	private android.text.TextWatcher TextWatcher = new TextWatcher() {
 		@Override
 		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
 		}
 
 		@Override
@@ -84,6 +90,7 @@ public class LoginKioskActivity extends AppCompatActivity {
 		}
 	};
 
+/* variables progress */
 	ProgressDialog progressDialog;
 
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
@@ -91,18 +98,25 @@ public class LoginKioskActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_kios);
+		/* set screen portrait */
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		mQueue = Volley.newRequestQueue(this);
+
 		// hidden keyboard
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-//		hideSystemUI.hideNavigations(this);
+		hideSystemUI.hideNavigations(this);
 		hideKeyboard.setupUI(findViewById(R.id.container_login_kiosk), this);
 		hideKeyboard.setupUI(findViewById(R.id.card_customer_service), this);
+
+		/*set request to connect server */
+		mQueue = Volley.newRequestQueue(this);
+
 		init();
+		/*set textWatcher*/
 		usernameEditText = findViewById(R.id.et_username);
 		usernameEditText.addTextChangedListener(TextWatcher);
 		passwordEditText = findViewById(R.id.et_password);
 		passwordEditText.addTextChangedListener(TextWatcher);
+
 		loginButton = findViewById(R.id.bt_login);
 		loginButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -130,7 +144,7 @@ public class LoginKioskActivity extends AppCompatActivity {
 			}
 		});
 	}
-
+/* set ui */
 	private void init() {
 		login_tv_welcome = findViewById(R.id.tv_welcome_to);
 		login_tv_welcome.setText(R.string.tx_welcome);
@@ -143,6 +157,7 @@ public class LoginKioskActivity extends AppCompatActivity {
 		login_img_logo_gdj = findViewById(R.id.img_logo);
 		login_tv_datetime = findViewById(R.id.tv_datetime);
 		login_tv_ddmmyy = findViewById(R.id.tv_time);
+		/*set date&&time*/
 		Thread thread = new Thread(){
 			@Override
 			public void run() {
@@ -168,7 +183,7 @@ public class LoginKioskActivity extends AppCompatActivity {
 		thread.start();
 	}
 
-
+/* call api vmi login */
 	private void LoginHandler() {
 		String url = "https://lac-apps.albatrossthai.com/api/VMI/php/Login/Login_Kiosk.php";
 		String Login_User = user;
@@ -202,12 +217,12 @@ public class LoginKioskActivity extends AppCompatActivity {
 					String str_user_terminal_type = ar_resultData.get(3);
 
 					str_id = status_id;
-					sp = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+					sp = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);  // ชื่อไฟล์ที่จะทำการเก็บ, รูปแบบการจัดเก็บไฟล์
 					editor = sp.edit();
-					editor.putString(USER_NAME, str_user_code);
+					editor.putString(USER_NAME, str_user_code); // ทำการเก็บข้อมูล
 					editor.putString(USER_PROJECT_NAME, str_user_bom_pj_name);
 					editor.putString(USER_TERMINAL_TYPE, str_user_terminal_type);
-					editor.apply();
+					editor.commit(); // บันทึกข้อมูล
 
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -256,6 +271,7 @@ public class LoginKioskActivity extends AppCompatActivity {
 	}
 
 	@Override
-	public void onBackPressed() { }
+	public void onBackPressed() {
+	}
 
 }

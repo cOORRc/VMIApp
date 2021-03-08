@@ -13,13 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.KioskApp.ui.hideSystemUI;
+
 public class SplashActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+		hideSystemUI.hideNavigations(this);
 		if (isConnected()) {
 //			mHandler.removeCallbacks(mToastRunnable);
 			Intent login_page = new Intent(getApplicationContext(), LoginKioskActivity.class);

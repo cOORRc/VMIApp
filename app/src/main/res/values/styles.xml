@@ -51,15 +51,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_20</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="fontFamily"></item>
 
     </style>
 
     <style name="Title_bold" >
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">@dimen/text_28</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="fontFamily"></item>
 
     </style>
 

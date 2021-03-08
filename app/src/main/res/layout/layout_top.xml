@@ -27,7 +27,7 @@
             style="@style/styleTitle_28"/>
 
         <TextView
-            style="@style/styleTitle_22"
+            style="@style/styleTitle_20Bold"
             android:textStyle="bold"
             android:id="@+id/tv_gdj_vmi_system"
             android:layout_width="wrap_content"
@@ -36,16 +36,14 @@
             android:layout_below="@+id/tv_welcome_to"/>
 
         <TextView
-            style="@style/styleTitle_22"
-            android:textStyle="bold"
+            style="@style/styleTitle_18Bold"
             android:id="@+id/tv_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tx_cus"
             android:layout_below="@id/tv_gdj_vmi_system"/>
         <TextView
-            style="@style/styleTitle_22"
-            android:textStyle="normal"
+            style="@style/styleTitle_18Normal"
             android:id="@+id/tv_customer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,16 +53,14 @@
             android:layout_alignBaseline="@id/tv_customer"
             android:layout_marginStart="8dp"/>
         <TextView
-            style="@style/styleTitle_22"
-            android:textStyle="bold"
+            style="@style/styleTitle_18Bold"
             android:id="@+id/tv_datetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tx_datetime"
             android:layout_below="@id/tv_customer"/>
         <TextView
-            style="@style/styleTitle_22"
-            android:textStyle="normal"
+            style="@style/styleTitle_18Normal"
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

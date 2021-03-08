@@ -12,7 +12,6 @@ public class DataAlertSet {
 		TextPartUsage = part_usage;
 		TextPartPacking = part_packing;
 		TextPartQty = part_qty;
-
 		TextFgCodeGDJ = part_fg_code_gdj;
 	}
 	public String getTextPartSet() {

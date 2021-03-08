@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 
 public class MyServiceManager extends BroadcastReceiver {
+    /*
+    * auto open app
+    * */
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.KioskApp.ui.hideSystemUI;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -35,33 +36,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapter.OnItemClickListener {
-
+	/* variables ui */
 	private TextView usage_set_tv_title_cus_service, usage_set_tv_gdj_vmi_system,
 			usage_set_tv_datetime, usage_set_tv_ddmmyy, usage_set_tv_customer,
 			usage_set_tv_customer_name, usage_set_tv_emergency_set;
 	private ImageView usage_set_img_logo_gdj;
 	private Button usage_set_bt_back;
-	String name_bom;
+	private RecyclerView usage_set_rv_itemMenu;
+	private ProgressDialog usage_set_progDialog;
+
+	/* SharedPreferences */
 	SharedPreferences sp;
 	SharedPreferences.Editor editor;
+	/* key SharedPreferences*/
 	final String PREF_NAME = "Preferences";
 	final String USER_NAME = "Username";
 	final String USER_PROJECT_NAME = "ProjectName";
 	final String USER_BOM = "Bom";
+	/* variables SharedPre */
 	String ord_set_sp_tx_username, ord_set_sp_tx_project_name;
-	private RecyclerView usage_set_rv_itemMenu;
+
+	/*set recyclerView*/
 	private ArrayList<DataIMCSet> orderList;
 	private OrderSetAdapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
+
+	/* Request to connect server for get json */
 	private RequestQueue mQueue;
-	private String EXTRA_TEXT = "extra_tx";
-	private ProgressDialog usage_set_progDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_special_order_set);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		hideSystemUI.hideNavigations(this);
 		sp = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 		editor = sp.edit();
 		ord_set_sp_tx_username = sp.getString(USER_NAME, "");
@@ -77,7 +85,7 @@ public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapt
 		usage_set_tv_title_cus_service = findViewById(R.id.tv_cus_service);
 		usage_set_tv_title_cus_service.setText(R.string.tx_cus_service);
 		usage_set_tv_title_cus_service.setVisibility(View.VISIBLE);
-		usage_set_tv_title_cus_service.setTextSize(40);
+		usage_set_tv_title_cus_service.setTextSize(32);
 		usage_set_tv_gdj_vmi_system = findViewById(R.id.tv_gdj_vmi_system);
 		usage_set_tv_customer = findViewById(R.id.tv_customer);
 		usage_set_tv_customer_name = findViewById(R.id.tv_customer_name);
@@ -113,13 +121,14 @@ public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapt
 			}
 		};
 		thread.start();
+		/*set recyclerView*/
 		usage_set_rv_itemMenu = findViewById(R.id.special_set_item_manu);
 		usage_set_rv_itemMenu.setHasFixedSize(true);
 		usage_set_rv_itemMenu.setLayoutManager(new GridLayoutManager(this, 2));
 		ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(this, R.dimen.item_padding);
 		usage_set_rv_itemMenu.addItemDecoration(itemDecoration);
 		orderList = new ArrayList<>();
-
+		/* set handler for progress*/
 		final Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
 			@Override
@@ -134,7 +143,7 @@ public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapt
 		usage_set_progDialog.show(); // Display Progress Dialog
 		usage_set_progDialog.setCancelable(false);
 	}
-
+	/*call api for set menu(IMCxxx)*/
 	private void getAllItem() {
 		String urlOrderSet = "https://lac-apps.albatrossthai.com/api/VMI/php/Master_Data/Part_fgCode.php";
 		String User_Project_Name = ord_set_sp_tx_project_name;
@@ -152,7 +161,7 @@ public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapt
 					for (int i = 0; i < ja_SetResultData.length(); i++) {
 						JSONObject menu_resulItem = ja_SetResultData.getJSONObject(i);
 						String bom_item = menu_resulItem.getString("bom_ctn_code_normal");
-						name_bom = bom_item;
+						String name_bom = bom_item;
 						String url_imgItem = "https://lac-apps.albatrossthai.com/api/VMI/Image_GDJ/" + name_bom + ".png";
 						orderList.add(new DataIMCSet(url_imgItem, bom_item));
 					}
@@ -174,6 +183,7 @@ public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapt
 		mQueue.add(request);
 	}
 
+	/*when click menu and keep carton code (IMCxxx)*/
 	@Override
 	public void onItemClick(int position, String tx_snp) {
 		String data_snp_bom = tx_snp;
@@ -182,6 +192,7 @@ public class UsageSetActivity extends AppCompatActivity implements OrderSetAdapt
 		startActivity(new Intent(UsageSetActivity.this, UsageSNPSetActivity.class));
 	}
 
+	/*back button*/
 	public void onClickBack(View view) {
 		if (view.getId() == R.id.bt_back) {
 			startActivity(new Intent(getApplicationContext(), CenterActivity.class));

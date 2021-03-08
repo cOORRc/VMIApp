@@ -7,12 +7,13 @@
     <TextView
         android:id="@+id/al_us_snp_com_tv_part"
         style="@style/alr_title_com_nor"
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:paddingVertical="10dp"
         android:text="@string/tx_default"
         android:gravity="left"
         android:paddingStart="20dp"
+        android:maxLines="2"
         android:textStyle="normal" />
 
     <TextView
@@ -41,14 +42,15 @@
     <TextView
         android:id="@+id/al_us_snp_com_tv_stock"
         style="@style/alr_title_com_nor"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/al_us_snp_com_tv_packing_snp"
         android:layout_marginHorizontal="3dp"
         android:paddingVertical="10dp"
         android:text="0"
         android:textAlignment="center"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:maxLines="2"/>
     <TextView
         android:id="@+id/al_us_snp_com_tv_qty"
         style="@style/alr_title_com_nor"
@@ -59,7 +61,8 @@
         android:paddingVertical="10dp"
         android:text="0"
         android:textAlignment="center"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:maxLines="2"/>
 
     <LinearLayout
         android:id="@+id/al_us_snp_com_number_picker"
@@ -79,14 +82,12 @@
         <EditText
             android:id="@+id/al_us_snp_com_num_cus"
             style="@style/alr_title_com_nor"
-            android:layout_width="50dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:background="@color/black_tra"
             android:gravity="center"
             android:inputType="number"
-            android:lines="1"
-            android:maxEms="1"
             android:text="0" />
 
         <Button

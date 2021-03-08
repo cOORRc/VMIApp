@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.KioskApp.ui.hideKeyboard;
+import com.KioskApp.ui.hideSystemUI;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -49,24 +50,31 @@ import java.util.HashMap;
 
 public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAdapter.OnItemClickListener,
         AdapterView.OnItemSelectedListener {
-
+    /* variables ui */
     private TextView usageSNPCom_tv_title_cus_service, usageSNPCom_tv_gdj_vmi_system, usageSNPCom_tv_customer, usageSNPCom_tv_customer_name, usageSNPCom_tv_emergency_set_imc, usageSNPCom_tv_emergency_set;
-
     private ImageView usageSNPCom_img_logo_gdj;
     private Button usageSNPCom_bt_back;
     private Button usageSNPCom_bt_cart;
-
     private Spinner spinner;
+    private Dialog di_usage_snpCom;
+    private TextView usageSNPCom_tv_datetime, usageSNPCom_tv_ddmmyy;
+    private ProgressDialog usageSNPCom_progDi;
+    private EditText usageSNPCom_et_filter;
+
+    /* set spinner*/
     private ArrayList<DataSpin> List;
     private SpinnerAdapter spinnerAdapter;
     String clickedSpinner;
 
+    /* set recyclerView part number*/
     private RecyclerView usageSNPCom_rv_itemMenu;
     private ArrayList<DataSNPSet> usageComList;
     private SNPOrderAdapter com_imc_Adapter;
 
+    /* SharedPreferences */
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    /* key SharedPreferences*/
     final String PREF_NAME = "Preferences";
     final String USER_NAME = "Username";
     final String USER_PROJECT_NAME = "ProjectName";
@@ -75,15 +83,15 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
     String usage_com_snp_sp_tx_username, usage_com_snp_sp_tx_project_name, usage_com_snp_sp_tx_bom;
     String part_com_number, ship_type_com;
 
+    /* Request to connect server for get json */
     private RequestQueue usageSNPComQueue;
+    private RequestQueue com_snp_queue;
 
+    /* variables for check picker*/
     private int xx = 0;
-    private String sta_idNum;
-    private Dialog di_usage_snpCom;
-    private TextView usageSNPCom_tv_datetime, usageSNPCom_tv_ddmmyy;
-    private ProgressDialog usageSNPCom_progDi;
-    private EditText usageSNPCom_et_filter;
 
+    /* variables json data*/
+    private String sta_idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +99,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_spe_order_snp_set);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        hideSystemUI.hideNavigations(this);
         hideKeyboard.setupUI(findViewById(R.id.container_partNumber), this);
         sp = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
         usage_com_snp_sp_tx_username = sp.getString(USER_NAME, "");
@@ -107,12 +116,12 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         super.onResume();
         callApi_MyCart();
     }
-
+/* set ui */
     private void init_snpCom() {
         usageSNPCom_tv_title_cus_service = findViewById(R.id.tv_cus_service);
         usageSNPCom_tv_title_cus_service.setText(R.string.tx_cus_service);
         usageSNPCom_tv_title_cus_service.setVisibility(View.VISIBLE);
-        usageSNPCom_tv_title_cus_service.setTextSize(40);
+        usageSNPCom_tv_title_cus_service.setTextSize(32);
         usageSNPCom_tv_gdj_vmi_system = findViewById(R.id.tv_gdj_vmi_system);
         usageSNPCom_tv_customer = findViewById(R.id.tv_customer);
         usageSNPCom_tv_customer_name = findViewById(R.id.tv_customer_name);
@@ -183,6 +192,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
 
     }
 
+    /* set search */
     /*	26/01/64 add filter*/
     private void filter(String str_fil) {
         ArrayList<DataSNPSet> filteredList = new ArrayList<>();
@@ -194,6 +204,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         com_imc_Adapter.filterList(filteredList);
     }
 
+    /* set spinner */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         DataSpin clickedItem = (DataSpin) parent.getItemAtPosition(position);
@@ -214,6 +225,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+    /* set Progress */
     private void progDialog() {
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -230,6 +242,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         usageSNPCom_progDi.setCancelable(false);
     }
 
+    /* call api for get data about part number and set data on recycleView */
     private void getPartNumber() {
         String urlUsageCom = "https://lac-apps.albatrossthai.com/api/VMI/php/Master_Data/Part_fgCodeCus.php";
         String FG_Code = usage_com_snp_sp_tx_bom;
@@ -274,6 +287,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         usageSNPComQueue.add(request_ComSnp);
     }
 
+    /*call api for set data on spinner*/
     private void getSNP_spinner() {
         String url_usageSNPcom = "https://lac-apps.albatrossthai.com/api/VMI/php/Master_Data/fg_codeSnp.php";
         String fg_code_itemcode = usage_com_snp_sp_tx_bom;
@@ -311,6 +325,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         usageSNPComQueue.add(request_ComSpin);
     }
 
+    /*cart button*/
     public void onClickUsage(View view) {
         if (view.getId() == R.id.spe_order_set_snp_bt_cart_count) {
             usageSNPCom_et_filter.getText().clear();
@@ -318,6 +333,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         }
     }
 
+    /*back button*/
     public void onClickBack(View view) {
         if (view.getId() == R.id.bt_back) {
             usageSNPCom_et_filter.getText().clear();
@@ -325,20 +341,22 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         }
     }
 
+    /*variables ui alert*/
     private ImageView alert_usage_snp_com_img_imc;
     private TextView alert_usage_snp_com_tv_ctn_code, alert_usage_snp_com_tv_part_num;
-    private RecyclerView alert_usage_snp_com_rv_part_com;
     private Button alert_usage_snp_com_bt_close, alert_usage_snp_com_bt_cart;
     private TextView alert_usage_snp_com_tv_subSec_ctn_code, alert_usage_snp_com_tv_subSec_part_num;
-    private ArrayList<DataAlertUsageCom> alertUsageComArrayList;
-    private TextView tx_pack, tx_stock, tx_qty;
-    private EditText ed_picker;
-    private String tx_rv_stock, tx_rv_qty, tx_rv_picker, tx_rv_pack;
     private EditText et_picker;
     private Button bt_add;
     private Button bt_minus;
     private View view;
 
+    /*set recyclerView*/
+    private RecyclerView alert_usage_snp_com_rv_part_com;
+    private ArrayList<DataAlertUsageCom> alertUsageComArrayList;
+    private AlertUsageComAdapter alert_part_ComAdapter;
+
+    /* on click a partNumber it will show alert for order*/
     @Override
     public void onItemClick(int position, final String str_partNumber, final String str_snp, final String str_ship) {
         usageSNPCom_et_filter.getText().clear();
@@ -370,6 +388,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         alert_usage_snp_com_rv_part_com.setHasFixedSize(false);
         alert_usage_snp_com_rv_part_com.setLayoutManager(new LinearLayoutManager(this));
         alertUsageComArrayList = new ArrayList<DataAlertUsageCom>();
+        /* set data about order on alert */
         api_alert(str_partNumber, str_ship, str_snp);
         alert_usage_snp_com_bt_cart = di_usage_snpCom.findViewById(R.id.al_com_bt_cart);
         alert_usage_snp_com_bt_cart.setOnClickListener(new View.OnClickListener() {
@@ -428,6 +447,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
                                 int numQ = Integer.parseInt(tx_rv_qty);
                                 callApi_MyCart();
                                 if (numQ != 0) {
+                                    /* save */
                                     api_saveUsagecom(str_partNumber, str_ship, tx_rv_sku, tx_rv_pack,
                                             tx_rv_fg_code_gdj, tx_rv_fg_code_set_abt, numPic, str_snp);
                                 }
@@ -473,9 +493,7 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         di_usage_snpCom.show();
     }
 
-    private AlertUsageComAdapter alert_part_ComAdapter;
-    private RequestQueue com_snp_queue;
-
+    /* call api for set data about order */
     private void api_alert(String str_partNumber, String str_ship, String str_snp) {
         String url_usage_partNum = "https://lac-apps.albatrossthai.com/api/VMI/php/Usage_Confirm/Part_Com_Stock.php";
         final String fg_code_partNumber = str_partNumber;
@@ -591,8 +609,10 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         com_snp_queue.add(request_partNum);
     }
 
+    /* Request to connect server for get json */
     private RequestQueue usageCom_snp_saveQueue;
 
+    /* call api save order*/
     private void api_saveUsagecom(String str_partNumber, String str_ship, String tx_rv_sku, String tx_rv_pack,
                                   String tx_rv_fg_code_gdj, String tx_rv_fg_code_set_abt, int numPic, String str_snp) {
         String urlSave = "https://lac-apps.albatrossthai.com/api/VMI/php/Usage_Confirm/Usage_Save_Pre_Com.php";
@@ -645,10 +665,11 @@ public class UsageSNPComActivity extends AppCompatActivity implements SNPOrderAd
         usageCom_snp_saveQueue.add(request_partNum);
     }
 
-
+    /* variables json data cart */
     private String sta_idMyCart = "0";
     private int sta_tx_MyCart = 0;
 
+    /* call api qty on cart for set qty on usageSNPSet_bt_cart */
     private void callApi_MyCart() {
         String urlMyCart = "https://lac-apps.albatrossthai.com/api/VMI/php/Usage_Confirm/Usage_Qty_MyCart.php";
         String Project_Name = usage_com_snp_sp_tx_project_name;

@@ -9,6 +9,9 @@ import android.support.v4.app.DialogFragment;
 import java.util.Calendar;
 
 public class DatePickerFragment extends DialogFragment {
+	/*
+	* Picker date on special order
+	* */
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
